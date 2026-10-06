@@ -1,0 +1,17 @@
+{
+  "name": "science-research-writing-skills",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Agent skills for English scientific research writing",
+  "license": "MIT",
+  "scripts": {
+    "changeset": "changeset",
+    "version": "changeset version && node scripts/sync-plugin-version.mjs",
+    "check-plugin-version": "node scripts/sync-plugin-version.mjs --check",
+    "validate": "bash scripts/validate-skills.sh"
+  },
+  "devDependencies": {
+    "@changesets/changelog-github": "^0.7.0",
+    "@changesets/cli": "^2.30.0"
+  }
+}

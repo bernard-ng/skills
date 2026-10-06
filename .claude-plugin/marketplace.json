@@ -1,0 +1,21 @@
+{
+  "name": "bernard-ng",
+  "owner": {
+    "name": "Bernard Ngandu"
+  },
+  "description": "Bernard Ngandu's agent skills, as an installable Claude Code plugin.",
+  "plugins": [
+    {
+      "name": "science-research-writing-skills",
+      "source": "./",
+      "description": "Agent skills for English scientific research writing: section models, language precision, evidence and attribution checks, and manuscript review. Model-invoked, so the agent reaches for them automatically.",
+      "category": "research",
+      "keywords": [
+        "research",
+        "scientific-writing",
+        "academic-writing",
+        "manuscript"
+      ]
+    }
+  ]
+}

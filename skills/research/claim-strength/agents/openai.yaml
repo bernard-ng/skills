@@ -1,0 +1,3 @@
+interface:
+  display_name: "Claim Strength"
+  short_description: "Hedging calibrated to evidence"

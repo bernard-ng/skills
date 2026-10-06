@@ -1,0 +1,3 @@
+interface:
+  display_name: "Quantity"
+  short_description: "Sizes, comparisons, uncertainty"

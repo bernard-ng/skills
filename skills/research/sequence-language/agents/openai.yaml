@@ -1,0 +1,3 @@
+interface:
+  display_name: "Sequence"
+  short_description: "Order and timing of steps"
