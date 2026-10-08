@@ -3,7 +3,7 @@
 # Validate the skill library. Run locally or in CI (.github/workflows/validate.yml).
 #
 # Checks, per skill:   frontmatter, name, description rules, agents/openai.yaml, docs page.
-# Checks, repo-wide:   markdown links, bucket catalogs, plugin manifest coverage, version sync.
+# Checks, repo-wide:   markdown links, bucket catalogs, marketplace plugin coverage, version sync.
 #
 # Every problem is reported before the script exits, so one run shows the whole list.
 # Exit status: 0 when clean, 1 when any check failed.
@@ -20,12 +20,14 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 SKILLS_DIR="$ROOT/skills"
 DOCS_DIR="$ROOT/docs"
-PLUGIN_JSON="$ROOT/.claude-plugin/plugin.json"
 MARKETPLACE_JSON="$ROOT/.claude-plugin/marketplace.json"
 PACKAGE_JSON="$ROOT/package.json"
 
-# Buckets whose skills ship in the Claude Code plugin. Other buckets must not appear in it.
+# Buckets whose skills ship as Claude Code plugins, and the marketplace plugin that carries each one.
+# Every plugin lists exactly the skills of its bucket; other buckets must not appear in it.
 PROMOTED_BUCKETS="research engineering"
+PLUGIN_FOR_research="science-research-writing-skills"
+PLUGIN_FOR_engineering="software-design-skills"
 
 # Top-level markdown files whose links are checked, in addition to skills, docs, and catalogs.
 TOP_LEVEL_DOCS="README.md AGENTS.md SCOPE.md GLOSSARY.md CHANGELOG.md"
@@ -176,46 +178,62 @@ check_catalogs() {
   done < <(skill_files)
 }
 
-# check_plugin  plugin.json must list exactly the skills in the promoted buckets.
+# check_plugin  each marketplace plugin must list exactly the skills of its bucket, and no bucket
+# may be left without a plugin.
 check_plugin() {
-  local expected listed bucket dir s
+  local bucket plugin expected listed dir s
 
-  if [[ ! -f "$PLUGIN_JSON" ]]; then
-    fail ".claude-plugin/plugin.json: missing"
+  if ! jq empty "$MARKETPLACE_JSON" 2>/dev/null; then
+    fail ".claude-plugin/marketplace.json: missing or invalid JSON"
     return
   fi
-  if ! jq empty "$PLUGIN_JSON" 2>/dev/null; then
-    fail ".claude-plugin/plugin.json: invalid JSON"
-    return
-  fi
-  jq empty "$MARKETPLACE_JSON" 2>/dev/null || fail ".claude-plugin/marketplace.json: missing or invalid JSON"
 
-  expected="$(
-    for bucket in $PROMOTED_BUCKETS; do
+  for bucket in $PROMOTED_BUCKETS; do
+    plugin="$(eval "echo \"\$PLUGIN_FOR_$bucket\"")"
+    if ! jq -e --arg n "$plugin" '.plugins[] | select(.name == $n)' "$MARKETPLACE_JSON" >/dev/null; then
+      fail ".claude-plugin/marketplace.json: missing plugin '$plugin' for bucket $bucket"
+      continue
+    fi
+
+    expected="$(
       for dir in "$SKILLS_DIR/$bucket"/*/; do
         [[ -f "${dir}SKILL.md" ]] && echo "./skills/$bucket/$(basename "$dir")"
-      done
-    done | sort
-  )"
-  listed="$(jq -r '.skills[]' "$PLUGIN_JSON" | sort)"
+      done | sort
+    )"
+    listed="$(jq -r --arg n "$plugin" '.plugins[] | select(.name == $n) | .skills[]' "$MARKETPLACE_JSON" | sort)"
 
-  # Lines only in `expected` are missing from the manifest; lines only in `listed` are extra.
+    # Lines only in `expected` are missing from the plugin; lines only in `listed` are extra.
+    while read -r s; do
+      [[ -z "$s" ]] || fail "marketplace.json ($plugin): missing $s"
+    done < <(comm -23 <(echo "$expected") <(echo "$listed"))
+    while read -r s; do
+      [[ -z "$s" ]] || fail "marketplace.json ($plugin): lists unknown or foreign $s"
+    done < <(comm -13 <(echo "$expected") <(echo "$listed"))
+  done
+
+  # A plugin outside the known set would ship skills this script never checks.
   while read -r s; do
-    [[ -z "$s" ]] || fail ".claude-plugin/plugin.json: missing $s"
-  done < <(comm -23 <(echo "$expected") <(echo "$listed"))
-  while read -r s; do
-    [[ -z "$s" ]] || fail ".claude-plugin/plugin.json: lists unknown or non-promoted $s"
-  done < <(comm -13 <(echo "$expected") <(echo "$listed"))
+    [[ -z "$s" ]] || fail "marketplace.json: unexpected plugin '$s'"
+  done < <(
+    jq -r '.plugins[].name' "$MARKETPLACE_JSON" | while read -r n; do
+      known=0
+      for bucket in $PROMOTED_BUCKETS; do
+        [[ "$n" == "$(eval "echo \"\$PLUGIN_FOR_$bucket\"")" ]] && known=1
+      done
+      ((known == 1)) || echo "$n"
+    done
+  )
 }
 
-# check_versions  plugin.json must carry the version that changesets wrote to package.json.
+# check_versions  every plugin must carry the version that changesets wrote to package.json.
 check_versions() {
-  local package_version plugin_version
+  local package_version plugin version
   package_version="$(jq -r '.version' "$PACKAGE_JSON" 2>/dev/null)"
-  plugin_version="$(jq -r '.version' "$PLUGIN_JSON" 2>/dev/null)"
-  if [[ "$package_version" != "$plugin_version" ]]; then
-    fail "plugin.json version '$plugin_version' differs from package.json '$package_version' (run: node scripts/sync-plugin-version.mjs)"
-  fi
+  while IFS=$'\t' read -r plugin version; do
+    if [[ "$version" != "$package_version" ]]; then
+      fail "marketplace.json: $plugin version '$version' differs from package.json '$package_version' (run: node scripts/sync-plugin-version.mjs)"
+    fi
+  done < <(jq -r '.plugins[] | [.name, (.version // "none")] | @tsv' "$MARKETPLACE_JSON" 2>/dev/null)
 }
 
 # ---------------------------------------------------------------------------
@@ -241,7 +259,7 @@ main() {
     echo "$ERRORS problem(s) found." >&2
     exit 1
   fi
-  echo "Validated $count skills: frontmatter, descriptions, openai.yaml, docs pages, catalogs, plugin manifest, version sync, and local links."
+  echo "Validated $count skills: frontmatter, descriptions, openai.yaml, docs pages, catalogs, plugin manifests, version sync, and local links."
 }
 
 main "$@"

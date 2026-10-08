@@ -1,5 +1,11 @@
 # science-research-writing-skills
 
+## 0.1.2
+
+### Patch Changes
+
+- Ship research and engineering skills as two Claude Code plugins, `science-research-writing-skills` and `software-design-skills`, so the skills.sh picker groups skills by bucket instead of listing engineering skills under the research heading.
+
 ## 0.1.1
 
 ### Patch Changes

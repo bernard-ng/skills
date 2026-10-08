@@ -9,7 +9,7 @@ Every research and engineering skill is **model-invoked**: the `description` is 
 ## Required for every skill
 
 - `agents/openai.yaml` beside `SKILL.md` (display name and short description).
-- An entry in `.claude-plugin/plugin.json`'s `skills` array.
+- An entry in the `skills` array of its bucket's plugin in `.claude-plugin/marketplace.json`.
 - A changeset (`npm run changeset`) for any user-visible change. Never edit `version` fields or `CHANGELOG.md` by hand. See [.agents/releasing.md](.agents/releasing.md).
 - A line in the relevant bucket catalog (`skills/<bucket>/README.md`).
 - A docs page at `docs/<bucket>/<name>.md`, written to [.agents/writing-docs.md](.agents/writing-docs.md). Renames move the page; removed skills keep an archived page.

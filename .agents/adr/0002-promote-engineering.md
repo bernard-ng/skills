@@ -1,5 +1,7 @@
 # 0002: Promote a focused engineering bucket
 
+Status: the single-plugin decision below is superseded by [0003](0003-one-plugin-per-bucket.md).
+
 ## Context
 
 The repository now includes responsibility-driven object design skills in `skills/engineering/`. ADR 0001 limited the plugin to research skills because no other bucket existed then.

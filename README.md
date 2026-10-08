@@ -29,11 +29,12 @@ A small change runs one focused skill. A large or unclear task starts at a route
 
 Pick one route. Installing both leaves every skill twice.
 
-**Claude Code plugin.** Ships every promoted skill in `skills/research/` and `skills/engineering/`, so cross-links and references keep working.
+**Claude Code plugins.** The marketplace offers one plugin per bucket, so install what you need. Each plugin ships every skill in its bucket, so cross-links and references keep working.
 
 ```bash
 claude plugin marketplace add bernard-ng/skills
 claude plugin install science-research-writing-skills@bernard-ng
+claude plugin install software-design-skills@bernard-ng
 ```
 
 **skills.sh, for Codex and other agents.** [skills.sh](https://skills.sh) copies editable skill files into your project.
@@ -88,7 +89,7 @@ The router, [domain-driven-design](skills/engineering/domain-driven-design/SKILL
 - `skills/research/`: the writing and review skills, with a catalog `README.md`.
 - `skills/engineering/`: responsibility-driven object design and domain-driven design skills, with a catalog `README.md`.
 - `docs/research/` and `docs/engineering/`: one human-facing page per skill.
-- `.claude-plugin/`: plugin and marketplace manifests.
+- `.claude-plugin/`: the marketplace manifest, with one plugin per bucket.
 - `.agents/`: repository conventions (invocation model, docs-page template, decision records).
 - `scripts/`: validation, plugin version sync, and linking tools.
 - `.changeset/`, `.github/workflows/`: release automation and CI. See [.agents/releasing.md](.agents/releasing.md).

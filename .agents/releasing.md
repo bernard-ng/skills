@@ -1,6 +1,6 @@
 # Releasing
 
-Releases use [changesets](https://github.com/changesets/changesets). `package.json` (private) holds the version; `scripts/sync-plugin-version.mjs` copies it into `.claude-plugin/plugin.json` so the plugin and the changelog never drift. Never edit either `version` field or `CHANGELOG.md` by hand.
+Releases use [changesets](https://github.com/changesets/changesets). `package.json` (private) holds the version; `scripts/sync-plugin-version.mjs` copies it into every plugin in `.claude-plugin/marketplace.json` so the plugins and the changelog never drift. Never edit either `version` field or `CHANGELOG.md` by hand.
 
 ## When a change needs a changeset
 
@@ -18,8 +18,8 @@ Choose the bump (the package is `science-research-writing-skills`), then write o
 
 ## What CI does
 
-1. `Validate` (`.github/workflows/validate.yml`) runs `scripts/validate-skills.sh` on every pull request and push to `main`. It also fails if `plugin.json` and `package.json` versions differ.
-2. `Release` (`.github/workflows/release.yml`) runs on every push to `main`. When changesets are pending it opens or updates a "chore: version skills" pull request that runs `npm run version` (bump `package.json`, write `CHANGELOG.md`, sync `plugin.json`). Merging that pull request tags the release with `npx changeset tag`.
+1. `Validate` (`.github/workflows/validate.yml`) runs `scripts/validate-skills.sh` on every pull request and push to `main`. It also fails if a plugin version in `marketplace.json` differs from `package.json`.
+2. `Release` (`.github/workflows/release.yml`) runs on every push to `main`. When changesets are pending it opens or updates a "chore: version skills" pull request that runs `npm run version` (bump `package.json`, write `CHANGELOG.md`, sync `marketplace.json`). Merging that pull request tags the release with `npx changeset tag`.
 
 ## Checks before merging a version pull request
 
