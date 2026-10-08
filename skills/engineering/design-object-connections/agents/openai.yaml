@@ -1,0 +1,3 @@
+interface:
+  display_name: "Design Object Connections"
+  short_description: "How collaborators find each other"

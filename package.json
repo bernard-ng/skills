@@ -2,7 +2,7 @@
   "name": "science-research-writing-skills",
   "version": "0.1.0",
   "private": true,
-  "description": "Agent skills for English scientific research writing",
+  "description": "Agent skills for scientific research writing and responsibility-driven object design",
   "license": "MIT",
   "scripts": {
     "changeset": "changeset",

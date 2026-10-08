@@ -8,13 +8,15 @@
     {
       "name": "science-research-writing-skills",
       "source": "./",
-      "description": "Agent skills for English scientific research writing: section models, language precision, evidence and attribution checks, and manuscript review. Model-invoked, so the agent reaches for them automatically.",
-      "category": "research",
+      "description": "Agent skills for scientific research writing and responsibility-driven object design.",
+      "category": "development",
       "keywords": [
+        "academic-writing",
+        "manuscript",
+        "object-design",
         "research",
         "scientific-writing",
-        "academic-writing",
-        "manuscript"
+        "software-engineering"
       ]
     }
   ]

@@ -1,6 +1,6 @@
 # Writing docs pages
 
-Every skill in `skills/research/` has a human-facing docs page at `docs/research/<skill-name>.md`. The page is not the skill and not a copy of `SKILL.md`. It orients one reader around one skill so they know what it does, when it fires, and where it sits in the system. The pages together are a distributed router; each is a node.
+Every promoted skill has a human-facing docs page at `docs/<bucket>/<skill-name>.md`. The page is not the skill and not a copy of `SKILL.md`. It orients one reader around one skill so they know what it does, when it fires, and where it sits in the system. The pages together are a distributed router; each is a node.
 
 Create or re-sync a page whenever a skill is added, renamed, or changes behaviour. A rename moves the file. A removed skill keeps its page, opened with `> **Archived.** ...` naming the replacement.
 
@@ -29,7 +29,7 @@ Answer beneath it, saying the unflattering thing where it is true.
 
 ## Where it fits
 
-Role (chain step, router, cross-cutting check), the one or two neighbours with a because-clause, and a pointer to [the router](./science-research-writing.md).
+Role (chain step, router, cross-cutting check), the one or two neighbours with a because-clause, and a pointer to the bucket router (`science-research-writing` for research, `responsibility-driven-design` for engineering).
 ```
 
 Keep the count of questions honest to the evidence. Prefer a real confusion over an invented one. Omit `Common questions` or `It's working if` rather than pad them.

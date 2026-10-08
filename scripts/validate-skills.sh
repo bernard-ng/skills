@@ -25,7 +25,7 @@ MARKETPLACE_JSON="$ROOT/.claude-plugin/marketplace.json"
 PACKAGE_JSON="$ROOT/package.json"
 
 # Buckets whose skills ship in the Claude Code plugin. Other buckets must not appear in it.
-PROMOTED_BUCKETS="research"
+PROMOTED_BUCKETS="research engineering"
 
 # Top-level markdown files whose links are checked, in addition to skills, docs, and catalogs.
 TOP_LEVEL_DOCS="README.md AGENTS.md SCOPE.md GLOSSARY.md CHANGELOG.md"

@@ -1,0 +1,3 @@
+interface:
+  display_name: "Trace Collaborations"
+  short_description: "Walk a scenario through the design"

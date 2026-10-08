@@ -1,0 +1,3 @@
+interface:
+  display_name: "Reliable Collaborations"
+  short_description: "Failure ownership and recovery"

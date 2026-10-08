@@ -10,4 +10,18 @@
 - **Invisible error:** A grammatical sentence that does not say what the author meant, such as a wrong tense, article, or modifier scope.
 - **Bare number:** A reported value with no frame or comment, so the reader supplies the interpretation.
 - **Model-invoked skill:** A skill the agent can reach on its own because its description names its triggers.
-- **Router:** The `science-research-writing` skill, which maps flows and the signals that fire each specialist.
+- **Router:** A category entry point that maps tasks to focused skills, currently `science-research-writing` and `responsibility-driven-design`.
+
+## Object design
+
+- **Role:** A coherent purpose and set of responsibilities an object can fulfill.
+- **Responsibility:** An obligation to know, decide, or do something for collaborators.
+- **Collaboration:** A request between roles to fulfill a larger responsibility.
+- **Control center:** A part of the system where control and coordination decisions cluster.
+- **Variation point:** A behavior or relationship intentionally designed to change in a specified way.
+- **Hot spot:** A named place where behavior varies, described by what varies and at least two concrete situations.
+- **Neighborhood:** A group of objects that work together on one problem and talk to the rest of the design through few, simple paths.
+- **Role stereotype:** A deliberate oversimplification of an object's character: information holder, structurer, service provider, coordinator, controller, or interfacer.
+- **Problem frame:** A class of problem (control, connection, information display, workpiece, transformation) with its own design questions.
+- **Core, revealing, and ordinary design problems:** Parts that must be solved well, parts that teach something new each time they are worked on, and the rest.
+- **Trust region:** A set of collaborators that can rely on each other's contracts; its edges validate what enters.
