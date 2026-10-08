@@ -1,8 +1,8 @@
 {
-  "name": "science-research-writing-skills",
+  "name": "bernard-ng-skills",
   "version": "0.1.2",
   "private": true,
-  "description": "Agent skills for scientific research writing and responsibility-driven object design and domain-driven design",
+  "description": "Agent skills for scientific research writing, responsibility-driven object design, and domain-driven design",
   "license": "MIT",
   "scripts": {
     "changeset": "changeset",

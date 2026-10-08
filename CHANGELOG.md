@@ -1,4 +1,4 @@
-# science-research-writing-skills
+# bernard-ng-skills
 
 ## 0.1.2
 

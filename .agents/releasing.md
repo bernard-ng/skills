@@ -10,7 +10,7 @@ Add one for any change users would notice: a new, renamed, or removed skill, or 
 npm run changeset
 ```
 
-Choose the bump (the package is `science-research-writing-skills`), then write one or two sentences for the changelog: what the skill now does differently and why it matters to the user. Commit the generated `.changeset/<name>.md` with the change.
+Choose the bump (the package is `bernard-ng-skills`), then write one or two sentences for the changelog: what the skill now does differently and why it matters to the user. Commit the generated `.changeset/<name>.md` with the change.
 
 - **patch:** wording fixes and clarifications that change how a skill behaves a little.
 - **minor:** a new skill, or a new capability in an existing one.
