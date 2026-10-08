@@ -1,0 +1,3 @@
+interface:
+  display_name: "Map Bounded Contexts"
+  short_description: "Model boundaries and relationships"

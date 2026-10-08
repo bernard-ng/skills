@@ -13,7 +13,7 @@ Every research and engineering skill is **model-invoked**: the `description` is 
 - A changeset (`npm run changeset`) for any user-visible change. Never edit `version` fields or `CHANGELOG.md` by hand. See [.agents/releasing.md](.agents/releasing.md).
 - A line in the relevant bucket catalog (`skills/<bucket>/README.md`).
 - A docs page at `docs/<bucket>/<name>.md`, written to [.agents/writing-docs.md](.agents/writing-docs.md). Renames move the page; removed skills keep an archived page.
-- An update to the bucket router (`science-research-writing` or `responsibility-driven-design`) when a skill is added, renamed, or removed.
+- An update to the bucket router (`science-research-writing`, `responsibility-driven-design`, or `domain-driven-design`) when a skill is added, renamed, or removed.
 
 ## Content rules
 

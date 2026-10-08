@@ -1,0 +1,3 @@
+interface:
+  display_name: "Domain-Driven Design"
+  short_description: "Domain model router and flow"

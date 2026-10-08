@@ -28,6 +28,7 @@ Design from behavior toward code. A software system is a community of cooperatin
 7. Harden: call the Skill tool with `design-reliable-collaborations` for failures and `design-variation-points` for justified change.
 8. Check and communicate: call the Skill tool with `review-object-design`, then `describe-object-collaborations` when others need to understand it.
 9. Stuck on a hard, surprising part: call the Skill tool with `solve-revealing-design-problems`.
+10. The work depends on business rules, domain vocabulary, or model boundaries: call the Skill tool with `domain-driven-design`.
 
 Each call loads one skill, so make several calls when a step needs several. For a small local change, run only the focused skill that matches the pressure.
 
@@ -50,6 +51,7 @@ Each call loads one skill, so make several calls when a step needs several. For 
 | Design or code review, refactor request, "is this good design" | `review-object-design` |
 | Design doc, diagram request, PR explaining a structure | `describe-object-collaborations` |
 | Repeated failed attempts, "this keeps getting harder" | `solve-revealing-design-problems` |
+| Business rules, shared domain language, aggregates, bounded contexts | `domain-driven-design` |
 
 ## Reference material
 

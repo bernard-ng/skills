@@ -1,8 +1,29 @@
 # Skills
 
-Focused agent skills, one folder per skill, each with a `SKILL.md` entry point. The `research/` bucket covers English scientific research writing. The `engineering/` bucket covers responsibility-driven object design: framing a problem, finding roles, assigning duties, tracing collaborations, control, reliability, flexibility, and design review.
+Agent skills that give a coding or writing agent a repeatable procedure for decisions it would otherwise improvise: how to structure a research paper, where a piece of logic belongs, what a domain concept really is. Each skill is a small folder with a `SKILL.md` entry point, plain markdown that works with Claude Code, Codex, and other agents.
 
-The skills are **model-invoked**. Each description lists the requests and text signals that should fire it, so the agent applies them on its own: ask for "write up my results" or "where should this decision live?" and the relevant skill can load. Start from the relevant router: [science-research-writing](skills/research/science-research-writing/SKILL.md) or [responsibility-driven-design](skills/engineering/responsibility-driven-design/SKILL.md). Browse the [research catalog](skills/research/README.md) or [engineering catalog](skills/engineering/README.md).
+## What is inside
+
+| Bucket | Skills | For |
+| --- | --- | --- |
+| [`research/`](skills/research/README.md) | 35 | Writing and reviewing English scientific papers: sections, evidence, claims, language, and consistency |
+| [`engineering/`](skills/engineering/README.md) | 26 | Designing software: responsibility-driven object design (roles, duties, collaborations, control, reliability) and domain-driven design (shared language, aggregates, explicit rules, bounded contexts, core focus) |
+
+Every bucket has a router skill that holds the flow and the signals that fire each specialist: [science-research-writing](skills/research/science-research-writing/SKILL.md), [responsibility-driven-design](skills/engineering/responsibility-driven-design/SKILL.md), and [domain-driven-design](skills/engineering/domain-driven-design/SKILL.md).
+
+## How it works
+
+The skills are **model-invoked**. Each description names the requests and code or text signals that should fire it, so the agent loads the right skill on its own, and you can still name one directly.
+
+| You say, or the agent sees | Skill that can load |
+| --- | --- |
+| "Write up my results" | `write-results` |
+| A sentence that claims "X caused Y" | `causal-language` |
+| "This class does too much" | `assign-object-responsibilities` |
+| The same word meaning two things in code and in the business | `build-ubiquitous-language` |
+| An invariant spanning several objects | `design-aggregates` |
+
+A small change runs one focused skill. A large or unclear task starts at a router and moves through the specialists it names. The skills guide the work; they do not replace the current code, requirements, or constraints. Start from a router, or browse the [research catalog](skills/research/README.md) and [engineering catalog](skills/engineering/README.md).
 
 ## Install
 
@@ -21,7 +42,7 @@ claude plugin install science-research-writing-skills@bernard-ng
 npx skills@latest add bernard-ng/skills
 ```
 
-The installer lets you choose skills and target agents. Select the whole category or include its router (`science-research-writing` or `responsibility-driven-design`) with the focused skills you need. Research skills link to phrase banks in their category. To install or update a single skill:
+The installer lets you choose skills and target agents. Select the whole category or include its router (`science-research-writing`, `responsibility-driven-design`, or `domain-driven-design`) with the focused skills you need. Research skills link to phrase banks in their category. To install or update a single skill:
 
 ```bash
 npx skills@latest add bernard-ng/skills --skill=write-results
@@ -53,10 +74,19 @@ Along the way, the language and evidence skills fire on their own signals, for e
 
 The router, [responsibility-driven-design](skills/engineering/responsibility-driven-design/SKILL.md), holds the flow and the signals that fire each skill. For a small change, only the matching specialist runs.
 
+## Domain design flow
+
+1. [build-ubiquitous-language](skills/engineering/build-ubiquitous-language/SKILL.md), when terms are fuzzy or differ between people and code.
+2. [model-domain-building-blocks](skills/engineering/model-domain-building-blocks/SKILL.md), then [design-aggregates](skills/engineering/design-aggregates/SKILL.md) for boundaries, creation, and storage.
+3. [make-implicit-concepts-explicit](skills/engineering/make-implicit-concepts-explicit/SKILL.md), [shape-supple-design](skills/engineering/shape-supple-design/SKILL.md), and [refactor-toward-deeper-insight](skills/engineering/refactor-toward-deeper-insight/SKILL.md) as the model strains or hides rules.
+4. [map-bounded-contexts](skills/engineering/map-bounded-contexts/SKILL.md), [distill-core-domain](skills/engineering/distill-core-domain/SKILL.md), and [evolve-large-scale-structure](skills/engineering/evolve-large-scale-structure/SKILL.md) for strategy across a large or multi-team system.
+
+The router, [domain-driven-design](skills/engineering/domain-driven-design/SKILL.md), holds the flow and the signals. The two engineering routers cooperate: domain design decides what the model is, object design decides how its parts divide work.
+
 ## Organization
 
 - `skills/research/`: the writing and review skills, with a catalog `README.md`.
-- `skills/engineering/`: responsibility-driven object design skills, with a catalog `README.md`.
+- `skills/engineering/`: responsibility-driven object design and domain-driven design skills, with a catalog `README.md`.
 - `docs/research/` and `docs/engineering/`: one human-facing page per skill.
 - `.claude-plugin/`: plugin and marketplace manifests.
 - `.agents/`: repository conventions (invocation model, docs-page template, decision records).

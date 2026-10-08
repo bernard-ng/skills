@@ -1,0 +1,3 @@
+interface:
+  display_name: "Design Aggregates"
+  short_description: "Boundaries, factories, repositories"

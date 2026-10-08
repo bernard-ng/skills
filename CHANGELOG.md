@@ -1,5 +1,12 @@
 # science-research-writing-skills
 
+## 0.1.1
+
+### Patch Changes
+
+- e5638db: Add 16 responsibility-driven object design skills: a router plus skills for framing a design problem, discovering and naming roles, defining shared roles, assigning responsibilities, tracing collaborations, designing object connections, choosing control style, placing objects in layers, applying patterns with judgment, reliable collaborations, variation points, design review, describing collaborations, and solving revealing design problems.
+- Add 10 domain-driven design skills to the engineering bucket: a router plus skills for building a ubiquitous language, modeling entities, values, and services, designing aggregates with factories and repositories, making implicit rules explicit, shaping supple design, refactoring toward deeper insight, mapping bounded contexts, distilling the core domain, and evolving a large-scale structure.
+
 ## 0.1.0
 
 ### Minor Changes

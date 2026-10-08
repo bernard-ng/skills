@@ -1,7 +1,7 @@
 {
   "name": "science-research-writing-skills",
-  "version": "0.1.0",
-  "description": "Agent skills for scientific research writing and responsibility-driven object design.",
+  "version": "0.1.1",
+  "description": "Agent skills for scientific research writing, responsibility-driven object design, and domain-driven design.",
   "author": {
     "name": "Bernard Ngandu"
   },
@@ -68,6 +68,16 @@
     "./skills/engineering/design-variation-points",
     "./skills/engineering/review-object-design",
     "./skills/engineering/describe-object-collaborations",
-    "./skills/engineering/solve-revealing-design-problems"
+    "./skills/engineering/solve-revealing-design-problems",
+    "./skills/engineering/domain-driven-design",
+    "./skills/engineering/build-ubiquitous-language",
+    "./skills/engineering/model-domain-building-blocks",
+    "./skills/engineering/design-aggregates",
+    "./skills/engineering/make-implicit-concepts-explicit",
+    "./skills/engineering/shape-supple-design",
+    "./skills/engineering/refactor-toward-deeper-insight",
+    "./skills/engineering/map-bounded-contexts",
+    "./skills/engineering/distill-core-domain",
+    "./skills/engineering/evolve-large-scale-structure"
   ]
 }

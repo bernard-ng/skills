@@ -1,8 +1,8 @@
 {
   "name": "science-research-writing-skills",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
-  "description": "Agent skills for scientific research writing and responsibility-driven object design",
+  "description": "Agent skills for scientific research writing and responsibility-driven object design and domain-driven design",
   "license": "MIT",
   "scripts": {
     "changeset": "changeset",

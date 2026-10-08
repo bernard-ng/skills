@@ -17,7 +17,7 @@ The test for staying model-invoked: could the model usefully reach for this skil
 
 An operative dependency is an instruction to **call the Skill tool** with the named skill ("Call the Skill tool with `tense-selection`"), not a deep relative link and not a bare slash-name left for the model to interpret. Naming the tool is what makes the harness load the skill. The Skill tool takes one skill per call, so a step needing two skills is two calls.
 
-Router prose that only names skills for a reader to choose from keeps plain markdown links. Each bucket has a router (`science-research-writing` or `responsibility-driven-design`) that maps its flows; keep the appropriate router in sync whenever a skill is added, renamed, or removed.
+Router prose that only names skills for a reader to choose from keeps plain markdown links. Each bucket has a router (`science-research-writing`, or `responsibility-driven-design` and `domain-driven-design` for engineering) that maps its flows; keep the appropriate router in sync whenever a skill is added, renamed, or removed.
 
 Phrase banks live in the `references/` folder of the section skill that owns them. Other skills link to them, so the `research/` category must be installed as a whole.
 

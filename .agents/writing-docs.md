@@ -29,7 +29,7 @@ Answer beneath it, saying the unflattering thing where it is true.
 
 ## Where it fits
 
-Role (chain step, router, cross-cutting check), the one or two neighbours with a because-clause, and a pointer to the bucket router (`science-research-writing` for research, `responsibility-driven-design` for engineering).
+Role (chain step, router, cross-cutting check), the one or two neighbours with a because-clause, and a pointer to the bucket router (`science-research-writing` for research, `responsibility-driven-design` or `domain-driven-design` for engineering).
 ```
 
 Keep the count of questions honest to the evidence. Prefer a real confusion over an invented one. Omit `Common questions` or `It's working if` rather than pad them.

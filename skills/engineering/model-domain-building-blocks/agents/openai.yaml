@@ -1,0 +1,3 @@
+interface:
+  display_name: "Model Domain Building Blocks"
+  short_description: "Entity, value, service, module"
